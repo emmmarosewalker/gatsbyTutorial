@@ -15,17 +15,27 @@ import "./layout.css"
 const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
+      query {
+        roseLogo: file(relativePath: {eq: "rose-icon.png"}) {
+          childImageSharp {
+            fluid(maxWidth: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        menuImg: file(relativePath: {eq: "burger-icon.png"}) {
+          childImageSharp {
+            fluid(maxWidth: 100) {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }
+      
     `}
     render={data => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header siteLogo={data.roseLogo.childImageSharp.fluid} menuImg={data.menuImg.childImageSharp.fluid} />
         <div
           style={{
             margin: `0 auto`,

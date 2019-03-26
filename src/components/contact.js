@@ -19,37 +19,18 @@ export default class Contact extends React.Component {
 
   render() {
     return (
-      <form className="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-        <input type="hidden" name="bot-field" />
-        <label>
-          First name
-          <input
-            type="text"
-            name="firstName"
-            value={this.state.firstName}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <label>
-          Last name
-          <input
-            type="text"
-            name="lastName"
-            value={this.state.lastName}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <label>
-          Message
-          <textarea
-            name="message"
-            form="contact"
-            value={this.state.message}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+      <form name="contact" className="contactForm" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+        <div>
+            <input type="hidden" name="bot-field" />
+            <label htmlFor="name">Name</label>
+            <input type="text" name="name" id="name" />
+            <label htmlFor="email">Email</label>
+            <input type="text" name="email" id="email" />
+            <label htmlFor="message">Message</label>
+            <textarea name="message" id="message" rows="6"></textarea>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
     )
   }
 }

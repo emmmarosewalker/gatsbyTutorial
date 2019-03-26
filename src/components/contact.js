@@ -17,13 +17,9 @@ export default class Contact extends React.Component {
     })
   }
 
-  handleSubmit = event => {
-    alert(`Message sent. Thank you!`)
-  }
-
   render() {
     return (
-      <form className="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={this.handleSubmit}>
+      <form className="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
       <input type="hidden" name="bot-field" />
         <label>
           First name

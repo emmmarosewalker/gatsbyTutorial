@@ -1,59 +1,77 @@
-import React from "react"
+import React from "react";
+import { navigateTo } from "gatsby-link";
 
-export default class IndexPage extends React.Component {
-  state = {
-    firstName: "",
-    lastName: "",
-    message: ""
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
+
+export default class Contact extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
 
-  handleInputChange = event => {
-    const target = event.target
-    const value = target.value
-    const name = target.name
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-    this.setState({
-      [name]: value,
+  handleSubmit = e => {
+    e.preventDefault();
+    const form = e.target;
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": form.getAttribute("name"),
+        ...this.state
+      })
     })
-  }
-
-  handleSubmit = event => {
-    //event.preventDefault();
-    alert("Thanks, your message has been processed.")
-  }
+      .catch(error => alert(error));
+  };
 
   render() {
     return (
-      <form name="contact" method="POST" data-netlify="true" onSubmit={this.handleSubmit}>
-        <label>
-          First name
-          <input
-            type="text"
-            name="firstName"
-            value={this.state.firstName}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <label>
-          Last name
-          <input
-            type="text"
-            name="lastName"
-            value={this.state.lastName}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <label>
-          Message
-          <input
-            type="text"
-            name="message"
-            value={this.state.message}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-    )
+      <div>
+        <form
+          name="contact"
+          method="post"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={this.handleSubmit}
+        >
+          {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+          <input type="hidden" name="form-name" value="contact" />
+          <p hidden>
+            <label>
+              Don’t fill this out:{" "}
+              <input name="bot-field" onChange={this.handleChange} />
+            </label>
+          </p>
+          <p>
+            <label>
+              Your name:<br />
+              <input type="text" name="name" onChange={this.handleChange} />
+            </label>
+          </p>
+          <p>
+            <label>
+              Your email:<br />
+              <input type="email" name="email" onChange={this.handleChange} />
+            </label>
+          </p>
+          <p>
+            <label>
+              Message:<br />
+              <textarea name="message" onChange={this.handleChange} />
+            </label>
+          </p>
+          <p>
+            <button type="submit">Send</button>
+          </p>
+        </form>
+      </div>
+    );
   }
 }

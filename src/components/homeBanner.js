@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"
+
 import React from "react"
 import Img from 'gatsby-image'
 import {
@@ -12,7 +12,7 @@ const HomepageBanner = () => (
                     logo: file(relativePath: { eq: "logo-svg-01.png" }) {
                         childImageSharp {
                             fluid(maxWidth: 1000) {
-                            ...GatsbyImageSharpFluid
+                            ...GatsbyImageSharpFluid_tracedSVG
                             }
                         }
                     }
@@ -51,15 +51,13 @@ const HomepageBanner = () => (
         <div style = {{
                 backgroundColor: "#e7e3f3",
                 width: "100%",
-                height: "500px",
+                height: "600px",
                 position: "relative",
                 origin: "100% center",
             }} className="bannerBackground">
 
             {/* Logo */}
-            <div style = {{
-                    width: '20%',
-                    height: '10%',
+            <div className="bannerLogo" style = {{
                     position: "absolute",
                     margin: "auto",
                     left: "0",

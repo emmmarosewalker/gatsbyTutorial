@@ -7,7 +7,10 @@ const Header = ({ siteLogo, menuImg }) => (
   <header
     style={{
       marginBottom: `1.45rem`,
+      zIndex: 100,
+      backgroundColor: 'white',
     }}
+  className = {'sticky'}
   >
     <div
       style={{
@@ -27,13 +30,13 @@ const Header = ({ siteLogo, menuImg }) => (
         <div style={{
           margin: 'auto',
           maxWidth: '30px'}}>
-        <Link
-          to="/"
-          style={{
-            textDecoration: `none`,
-          }}
-        >
-        <Img fluid={siteLogo} />
+          <Link
+            to="/"
+            style={{
+              textDecoration: `none`,
+            }}
+          >
+          <Img fluid={siteLogo} />
         </Link>
         </div>
     </div>

@@ -20,7 +20,7 @@ export default class Contact extends React.Component {
   render() {
     return (
       <form className="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-      <input type="hidden" name="bot-field" />
+        <input type="hidden" name="bot-field" />
         <label>
           First name
           <input
@@ -42,7 +42,7 @@ export default class Contact extends React.Component {
         <label>
           Message
           <textarea
-            name="comment"
+            name="message"
             form="contact"
             value={this.state.message}
             onChange={this.handleInputChange}

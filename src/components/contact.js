@@ -4,6 +4,7 @@ export default class Contact extends React.Component {
   state = {
     firstName: "",
     lastName: "",
+    mesage: "",
   }
 
   handleInputChange = event => {
@@ -17,8 +18,7 @@ export default class Contact extends React.Component {
   }
 
   handleSubmit = event => {
-    event.preventDefault()
-    alert(`Welcome ${this.state.firstName} ${this.state.lastName}!`)
+    alert(`Message sent. Thank you!`)
   }
 
   render() {
@@ -48,7 +48,7 @@ export default class Contact extends React.Component {
           <textarea
             name="comment"
             form="contact"
-            value={this.state.lastName}
+            value={this.state.message}
             onChange={this.handleInputChange}
           />
         </label>

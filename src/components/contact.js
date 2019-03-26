@@ -1,10 +1,10 @@
 import React from "react"
 
-export default class Contact extends React.Component {
+export default class IndexPage extends React.Component {
   state = {
     firstName: "",
     lastName: "",
-    message: "",
+    message: ""
   }
 
   handleInputChange = event => {
@@ -17,28 +17,42 @@ export default class Contact extends React.Component {
     })
   }
 
+  handleSubmit = event => {
+    console.log(event);
+  }
+
   render() {
     return (
-      <form name="contact" method="POST" data-netlify="true">
-      <p>
-        <label>Your Name: <input type="text" name="name" /></label>   
-      </p>
-      <p>
-        <label>Your Email: <input type="email" name="email" /></label>
-      </p>
-      <p>
-        <label>Your Role: <select name="role[]" multiple>
-          <option value="leader">Leader</option>
-          <option value="follower">Follower</option>
-        </select></label>
-      </p>
-      <p>
-        <label>Message: <textarea name="message"></textarea></label>
-      </p>
-      <p>
-        <button type="submit">Send</button>
-      </p>
-    </form>
+      <form name="contact" method="POST" data-netlify="true" onSubmit={this.handleSubmit}>
+        <label>
+          First name
+          <input
+            type="text"
+            name="firstName"
+            value={this.state.firstName}
+            onChange={this.handleInputChange}
+          />
+        </label>
+        <label>
+          Last name
+          <input
+            type="text"
+            name="lastName"
+            value={this.state.lastName}
+            onChange={this.handleInputChange}
+          />
+        </label>
+        <label>
+          Message
+          <input
+            type="text"
+            name="message"
+            value={this.state.message}
+            onChange={this.handleInputChange}
+          />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
     )
   }
 }

@@ -18,7 +18,7 @@ export default class IndexPage extends React.Component {
   }
 
   handleSubmit = event => {
-    event.preventDefault();
+    //event.preventDefault();
     alert("Thanks, your message has been processed.")
   }
 

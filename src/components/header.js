@@ -19,14 +19,6 @@ const Header = ({ siteLogo, menuImg }) => (
         zIndex: 100,
         position: 'relative',
       }}> 
-      {/* <Link
-          to="/"
-          style={{
-            textDecoration: `none`,
-          }}
-        >
-      <Img style={{width:'20px', position: 'absolute', margin: 'auto', top: '35%'}} fluid={menuImg} />
-      </Link> */}
         <div style={{
           margin: 'auto',
           maxWidth: '30px'}}>
@@ -38,7 +30,7 @@ const Header = ({ siteLogo, menuImg }) => (
           >
           <Img fluid={siteLogo} />
         </Link>
-        </div>
+       </div>
     </div>
   </header>
 )
